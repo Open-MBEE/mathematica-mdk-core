@@ -2,6 +2,10 @@ machine:
   java:
     version: oraclejdk8
 
+test:
+  override:
+    - "true"
+
 deployment:
   release:
     tag: "/[0-9.]+(-(a|b|rc)[0-9]+)?/"
