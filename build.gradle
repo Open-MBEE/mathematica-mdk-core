@@ -1,0 +1,73 @@
+group 'org.openmbee.mathematica'
+version '1.0.0'
+
+apply plugin: 'distribution'
+
+String buildTag = project.getProperties().get('buildTag')
+if (buildTag != null && !buildTag.isEmpty() && buildTag != version) {
+    throw new GradleException('Version mismatch.')
+}
+if (buildTag == null || buildTag.isEmpty() || project.getProperties().getOrDefault('artifactoryRepository', '').toLowerCase().contains('snapshot')) {
+    version += '-SNAPSHOT'
+}
+String buildNumber = project.getProperties().getOrDefault('buildNumber', System.currentTimeSeconds());
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '4.4.0'
+        classpath group: 'com.jfrog.bintray.gradle', name: 'gradle-bintray-plugin', version: '1.7.3'
+    }
+}
+
+distZip {
+    includeEmptyDirs false
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+    eachFile { file ->
+        file.setPath(path.substring(path.indexOf("/") + 1, path.length()))
+    }
+}
+
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'com.jfrog.bintray'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact distZip
+        }
+    }
+}
+
+artifactory {
+    contextUrl = project.getProperties().get('artifactoryUrl')
+    publish {
+        repository {
+            repoKey = project.getProperties().get('artifactoryRepository')
+            username = project.getProperties().get('artifactoryUsername')
+            password = project.getProperties().get('artifactoryPassword')
+        }
+        defaults {
+            publications('mavenJava')
+        }
+        clientConfig.setIncludeEnvVars(true)
+        if (buildNumber != null && !buildNumber.isEmpty()) {
+            clientConfig.info.setBuildNumber(buildNumber)
+        }
+    }
+}
+
+bintray {
+    user = project.getProperties().get('bintrayUser')
+    key = project.getProperties().get('bintrayKey')
+    publications = ['mavenJava']
+    publish = true
+    pkg {
+        repo = project.getProperties().get('bintrayRepo')
+        name = rootProject.name
+        userOrg = project.getProperties().get('bintrayUserOrg')
+    }
+}

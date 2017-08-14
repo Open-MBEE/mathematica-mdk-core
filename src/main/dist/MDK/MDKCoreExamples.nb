@@ -1,0 +1,803 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35522,        795]
+NotebookOptionsPosition[     32657,        697]
+NotebookOutlinePosition[     33015,        713]
+CellTagsIndexPosition[     32972,        710]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MDK Core Examples", "Chapter",
+ CellChangeTimes->{{3.701473408059896*^9, 3.701473422824184*^9}, {
+  3.711735377591612*^9, 3.7117353868963842`*^9}},
+ ExpressionUUID -> "eef8fedf-d557-45a0-8d74-2fdbd6de06db"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<MDK`MMS`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<MDK`ART`\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.701544738433942*^9, 3.7015447405362177`*^9}, {
+  3.7070663910150013`*^9, 3.707066393877501*^9}, {3.708710325175605*^9, 
+  3.7087103353001957`*^9}, {3.711720610563262*^9, 3.711720614825803*^9}, {
+  3.71173531150721*^9, 3.7117353213496*^9}},
+ ExpressionUUID -> "d1da23bb-4f87-40f8-99d1-e8318bb4acbe"],
+
+Cell[CellGroupData[{
+
+Cell["MMS Examples", "Section",
+ CellChangeTimes->{{3.701442670508366*^9, 3.7014426839861717`*^9}},
+ ExpressionUUID -> "75035eac-2530-49dd-8a3c-21d2801534d9"],
+
+Cell[CellGroupData[{
+
+Cell["Authorization:", "Subsection",
+ CellChangeTimes->{{3.706477155761801*^9, 3.70647716679814*^9}},
+ ExpressionUUID -> "e44560ed-ea38-4c2a-98c3-bd6e982aef76"],
+
+Cell["\<\
+Before your first execution of any of these functions, you need to call \
+MMSAuthorize. \
+\>", "Text",
+ CellChangeTimes->{{3.7064771690988073`*^9, 3.706477206225358*^9}, 
+   3.7064773493914347`*^9, {3.706477521166018*^9, 3.706477531540413*^9}},
+ ExpressionUUID -> "a88e0cc3-81df-4867-936d-9ea111f039f9"],
+
+Cell[BoxData[
+ RowBox[{"MMSAuthorize", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.706477209103219*^9, 3.706477212354472*^9}},
+ ExpressionUUID -> "1a0fcc08-dcc0-4345-8dd1-31e48a4c580d"],
+
+Cell["\<\
+Which will then prompt the user for their MMS username and password, creating \
+a Base64 basic authorization that will remain in the session for one hour or \
+until you do the following:\
+\>", "Text",
+ CellChangeTimes->{{3.7064772157602367`*^9, 3.7064772857078238`*^9}, 
+   3.7117216644009027`*^9},
+ ExpressionUUID -> "f21e47dd-1060-4b96-9b5a-44d1d9d12861"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSGetElement:", "Subsection",
+ CellChangeTimes->{{3.70024425293851*^9, 3.700244366249015*^9}, {
+  3.7014733041495028`*^9, 3.7014733058022118`*^9}},
+ ExpressionUUID -> "811f7677-38bf-4eda-b3c4-63ed78e64861"],
+
+Cell["\<\
+Takes in server, projectId, elementId, and refId as inputs. \
+\[OpenCurlyDoubleQuote]refId\[CloseCurlyDoubleQuote] is an optional argument \
+with a default value of \
+\[OpenCurlyDoubleQuote]master\[CloseCurlyDoubleQuote]. \
+\>", "Text",
+ CellChangeTimes->{{3.7002443710078993`*^9, 3.70024448988724*^9}, {
+  3.7002445700155993`*^9, 3.7002445864261007`*^9}, {3.701544879241741*^9, 
+  3.70154488091359*^9}, {3.703253083848297*^9, 3.703253108770553*^9}, {
+  3.703253195702969*^9, 3.703253263331263*^9}, {3.71172028925631*^9, 
+  3.711720289380459*^9}},
+ ExpressionUUID -> "31c2e065-e227-4787-b453-6576030d642d"],
+
+Cell[BoxData[
+ RowBox[{"out", " ", "=", " ", 
+  RowBox[{"MMSGetElement", "[", 
+   RowBox[{
+   "\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+    "\"\<ELEMENT_ID\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7002444953045063`*^9, 3.7002445144342546`*^9}, {
+   3.7002445563443937`*^9, 3.700244563992116*^9}, {3.700244613416802*^9, 
+   3.7002446722134323`*^9}, 3.700245061219842*^9, 3.701544526809342*^9, 
+   3.701544876875881*^9, 3.70325332282093*^9, {3.703253362088697*^9, 
+   3.70325339040982*^9}, {3.703254020421441*^9, 3.7032540357714148`*^9}, {
+   3.706477491323205*^9, 3.706477499600341*^9}, {3.7070663736957483`*^9, 
+   3.707066381046883*^9}, {3.7070685715770597`*^9, 3.707068585911099*^9}, {
+   3.70706872973705*^9, 3.707068740709735*^9}, {3.707070019450049*^9, 
+   3.7070700215038767`*^9}, {3.711720298797735*^9, 3.711720304073721*^9}, {
+   3.711721312496914*^9, 3.711721314947055*^9}},
+ ExpressionUUID -> "4a4cbde5-855b-4438-b7f6-18d7e14cd2c0"],
+
+Cell["\<\
+In the example above, \[OpenCurlyDoubleQuote]refId\[CloseCurlyDoubleQuote] \
+was omitted from the arguments. They will therefore take the default value \
+\[OpenCurlyDoubleQuote]master\[CloseCurlyDoubleQuote]. \
+\>", "Text",
+ CellChangeTimes->{{3.7032533976970367`*^9, 3.703253474129335*^9}, {
+  3.7117197941052217`*^9, 3.711719797253139*^9}},
+ ExpressionUUID -> "5c3a4272-73b3-4334-a4ac-70c91e785a77"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSGetElements:", "Subsection",
+ CellChangeTimes->{{3.7002452465158463`*^9, 3.7002452617105207`*^9}},
+ ExpressionUUID -> "c241f10a-2377-4bdc-b043-25239d05df04"],
+
+Cell["\<\
+Similar to MMSGetElement, but instead of \[OpenCurlyDoubleQuote]elementID,\
+\[CloseCurlyDoubleQuote] the argument is elementIDs and is a list of \
+elementIDs.\
+\>", "Text",
+ CellChangeTimes->{{3.7002452653970413`*^9, 3.7002453491200666`*^9}, {
+  3.700246140460334*^9, 3.7002461674141617`*^9}, {3.700247472235015*^9, 
+  3.700247473475038*^9}, {3.703253694400529*^9, 3.7032536952156143`*^9}},
+ ExpressionUUID -> "e2efbe38-d9ce-4673-9728-d3cca4aee392"],
+
+Cell[BoxData[
+ RowBox[{"MMSGetElements", "[", 
+  RowBox[{"\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<ELEMENT_ID_1\>\"", ",", "\"\<ELEMENT_ID_2\>\""}], "}"}], 
+   ",", "\"\<REF_ID\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.7002453581712093`*^9, 3.700245386285595*^9}, 
+   3.701544526816115*^9, {3.703253498985745*^9, 3.703253523489821*^9}, {
+   3.70325358557519*^9, 3.703253640585699*^9}, {3.7032540581112337`*^9, 
+   3.703254078375746*^9}, {3.705865914466056*^9, 3.70586591899207*^9}, {
+   3.711719804295308*^9, 3.711719809268282*^9}, {3.7117201543914957`*^9, 
+   3.711720194215802*^9}},
+ ExpressionUUID -> "987d04b6-a4cf-4ee7-8c19-29bb73879569"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSCreateElement | MMSUpdateElement:", "Subsection",
+ CellChangeTimes->{{3.700245401700947*^9, 3.7002454186244707`*^9}, {
+  3.700247086776286*^9, 3.700247091671359*^9}, {3.700247233071273*^9, 
+  3.700247248417172*^9}},
+ ExpressionUUID -> "83eb542f-3b11-408d-ab14-19799ce66b84"],
+
+Cell["\<\
+Creates an element with the given properties. Those properties being defined \
+in an argument as an association of keys and their values. MMSCreateElement \
+and MMSUpdateElement are interchangeable, but it is good practice to only use \
+MMSUpdateElement when the \[OpenCurlyDoubleQuote]id\[CloseCurlyDoubleQuote] \
+you define already exists in MMS.\
+\>", "Text",
+ CellChangeTimes->{{3.700245433311267*^9, 3.7002454403551273`*^9}, {
+   3.700245474904779*^9, 3.7002455441831913`*^9}, {3.700245596132915*^9, 
+   3.7002456432344837`*^9}, {3.700246560068302*^9, 3.700246560555475*^9}, {
+   3.700247106817286*^9, 3.700247196693118*^9}, {3.700247468042993*^9, 
+   3.700247469074531*^9}, {3.7032538491312037`*^9, 3.703253879972909*^9}, {
+   3.705352762141555*^9, 3.705352762176572*^9}, {3.7070665341004143`*^9, 
+   3.707066535561469*^9}, 3.71171998286033*^9, {3.711720264000435*^9, 
+   3.711720271481344*^9}},
+ ExpressionUUID -> "65ad4056-6b4a-48c7-8329-0f377b5de75d"],
+
+Cell[BoxData[
+ RowBox[{"MMSCreateElement", "[", 
+  RowBox[{"\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+   RowBox[{"<|", 
+    RowBox[{
+     RowBox[{"\"\<name\>\"", "\[Rule]", "\"\<MyNewElement\>\""}], ",", " ", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", " ", "\"\<ELEMENT_ID\>\""}]}], "|>"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.700245558506648*^9, 3.700245576450787*^9}, {
+   3.70024566155621*^9, 3.700245712602751*^9}, {3.7002457585804377`*^9, 
+   3.700245762392284*^9}, {3.700245850638411*^9, 3.7002458707726383`*^9}, {
+   3.700245937791153*^9, 3.700245957309827*^9}, {3.700246060702436*^9, 
+   3.700246065794547*^9}, 3.701544526823625*^9, {3.7032538928337708`*^9, 
+   3.703253909108086*^9}, {3.703253967572144*^9, 3.703253969665305*^9}, {
+   3.703254120469812*^9, 3.703254157264285*^9}, 3.70535276219026*^9, {
+   3.711719819270029*^9, 3.7117198359992943`*^9}, 3.711719888908745*^9, {
+   3.711719945971068*^9, 3.711719955948391*^9}, {3.711719990250239*^9, 
+   3.711720024168911*^9}, {3.711720071140604*^9, 3.711720082055139*^9}, {
+   3.711720545682617*^9, 3.711720546065023*^9}},
+ ExpressionUUID -> "6b18e33d-b21c-46f2-aed2-ed94799c35d8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSCreateElements | MMSUpdateElements:", "Subsection",
+ CellChangeTimes->{{3.7002462563309383`*^9, 3.7002462697934103`*^9}, {
+  3.700247095534601*^9, 3.70024709984029*^9}, {3.700247227952261*^9, 
+  3.700247229822977*^9}},
+ ExpressionUUID -> "856f04f0-9f0d-49d5-a0a8-4c25f318bd9c"],
+
+Cell["\<\
+Creates multiple elements, each with the given properties. So the \
+\[OpenCurlyDoubleQuote]elements\[CloseCurlyDoubleQuote] argument takes in a \
+list of elements where each element is an association of the properties \
+similar to MMSCreateElement. MMSCreateElements and MMSUpdateElements are \
+interchangeable, but it is good practice to only use MMSUpdateElements when \
+the \[OpenCurlyDoubleQuote]id\[CloseCurlyDoubleQuote] you define already \
+exists within the MMS.\
+\>", "Text",
+ CellChangeTimes->{{3.700246275546278*^9, 3.7002462872994347`*^9}, {
+   3.700246436821096*^9, 3.700246521190332*^9}, 3.700246566405778*^9, {
+   3.700247203629486*^9, 3.700247221958675*^9}, {3.700247462890256*^9, 
+   3.7002474642585573`*^9}, {3.703254249107484*^9, 3.703254249692135*^9}, 
+   3.7053527622107286`*^9, {3.711720705625802*^9, 3.711720705704764*^9}},
+ ExpressionUUID -> "23a63ba1-7777-4480-8f52-c503210867fd"],
+
+Cell[BoxData[
+ RowBox[{"MMSCreateElements", "[", 
+  RowBox[{"\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"<|", 
+      RowBox[{
+       RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<ELEMENT_ID_1\>\""}], ",", 
+       RowBox[{"\"\<name\>\"", "\[Rule]", "\"\<MyNewElement\>\""}]}], "|>"}], 
+     ",", 
+     RowBox[{"<|", 
+      RowBox[{
+       RowBox[{"\"\<id\>\"", "\[Rule]", "\"\<ELEMENT_ID_2\>\""}], ",", 
+       RowBox[{"\"\<name\>\"", "\[Rule]", "\"\<MyNewerElement\>\""}]}], 
+      "|>"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.700246533961562*^9, {3.700246888825728*^9, 3.700246964545341*^9}, 
+   3.7002470088187304`*^9, 3.701544526833633*^9, {3.7032542803023853`*^9, 
+   3.703254284436221*^9}, {3.703254377427079*^9, 3.70325442459606*^9}, {
+   3.7053527622299337`*^9, 3.70535276223253*^9}, {3.711720236203162*^9, 
+   3.711720253718038*^9}, {3.711720537796072*^9, 3.711720559610127*^9}},
+ ExpressionUUID -> "08cef769-7124-46b2-8c13-6e3e9cd0cde0"],
+
+Cell["\<\
+The elements \[OpenCurlyDoubleQuote]MyNewElement\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]MyNewerElement\[CloseCurlyDoubleQuote] will be created \
+in the project corresponding to the projectId. Note that \"refId\" was \
+omitted and will therefore take the default value \"master\".\
+\>", "Text",
+ CellChangeTimes->{{3.703254310507042*^9, 3.703254355807467*^9}, {
+  3.703254433227449*^9, 3.7032545087922287`*^9}, {3.703254556960445*^9, 
+  3.703254587621037*^9}, {3.7117205729864063`*^9, 3.711720577441296*^9}, {
+  3.711720721342114*^9, 3.71172072180326*^9}},
+ ExpressionUUID -> "d1ec7374-b829-4da8-b09d-57aa8f5001ed"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSDeleteElement:", "Subsection",
+ CellChangeTimes->{{3.700247278194778*^9, 3.7002472944030323`*^9}, 
+   3.700247573894245*^9},
+ ExpressionUUID -> "ad03acc1-5486-4736-a95d-caafaf9c8c5f"],
+
+Cell["\<\
+Deletes the element whose elementId corresponds to the elementId you define \
+in the method\[CloseCurlyQuote]s arguments.\
+\>", "Text",
+ CellChangeTimes->{{3.700247335929809*^9, 3.7002473751118402`*^9}, {
+   3.700247450450852*^9, 3.7002474598334103`*^9}, 3.703254605027253*^9, 
+   3.7053527622537127`*^9, {3.7117207325924187`*^9, 3.71172074722875*^9}},
+ ExpressionUUID -> "9b983bca-90f9-46db-a42b-d92919bcdd1a"],
+
+Cell[BoxData[
+ RowBox[{"MMSDeleteElement", "[", 
+  RowBox[{
+  "\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+   "\"\<ELEMENT_ID\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.700247411125888*^9, 3.700247440113659*^9}, 
+   3.700247513489181*^9, 3.701544526798312*^9, {3.7032546490529346`*^9, 
+   3.703254656904292*^9}, 3.7032547738854713`*^9, {3.711720755689164*^9, 
+   3.711720769841905*^9}},
+ ExpressionUUID -> "7cb3aa63-a98e-40a2-94f2-de8e26c57356"],
+
+Cell["\<\
+Again note that \"refId\" was omitted and will therefore take the default \
+value \"master\".\
+\>", "Text",
+ CellChangeTimes->{{3.703254795042301*^9, 3.703254816684045*^9}},
+ ExpressionUUID -> "d941d250-9fa8-4376-af33-1464ae9761fa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MMSDeleteElements:", "Subsection",
+ CellChangeTimes->{{3.700247559628313*^9, 3.700247570757688*^9}},
+ ExpressionUUID -> "269531ab-0668-438d-afde-58e2ed31830d"],
+
+Cell["\<\
+This method takes the list of elementIds and deletes the corresponding \
+elements from the MMS.\
+\>", "Text",
+ CellChangeTimes->{{3.7002475830388308`*^9, 3.700247675682238*^9}, {
+  3.7002477315550737`*^9, 3.7002477344006033`*^9}, {3.711720787368791*^9, 
+  3.7117207958069353`*^9}},
+ ExpressionUUID -> "9d412b6d-01d3-4b82-80fc-dc2e77364e81"],
+
+Cell[BoxData[
+ RowBox[{"MMSDeleteElements", "[", 
+  RowBox[{"\"\<https://mms.example.com\>\"", ",", "\"\<PROJECT_ID\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<ELEMENT_ID_1\>\"", ",", "\"\<ELEMENT_ID_2\>\""}], "}"}], 
+   ",", "\"\<REF_ID\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.7002477421957273`*^9, 3.7002478033452578`*^9}, 
+   3.701544526804099*^9, {3.703254834347846*^9, 3.703254919020672*^9}, 
+   3.7053545600178757`*^9, {3.71172078341138*^9, 3.711720826002912*^9}},
+ ExpressionUUID -> "6a9152f9-08fe-4c61-b01b-7ff5f6484135"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Artifactory Examples ", "Section",
+ CellChangeTimes->{{3.701442575130228*^9, 3.70144258227337*^9}, 
+   3.701442720202533*^9},
+ ExpressionUUID -> "d9c60f34-f418-49a4-b234-5b6cfef59c2c"],
+
+Cell[CellGroupData[{
+
+Cell["ARTGetArtifact:", "Subsection",
+ CellChangeTimes->{{3.701442997422007*^9, 3.701443057235139*^9}, 
+   3.705354679569955*^9},
+ ExpressionUUID -> "9f21bc22-2f77-41f7-9033-03c999b18099"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifactDirectory\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifact\[CloseCurlyDoubleQuote], and \
+\[OpenCurlyDoubleQuote]saveDirectory\[CloseCurlyDoubleQuote] as strings. The \
+artifact located in the \[OpenCurlyDoubleQuote]artifactDirectory\
+\[CloseCurlyDoubleQuote] is saved to \[OpenCurlyDoubleQuote]saveDirectory\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.70144306438717*^9, 3.701443165734502*^9}, {
+   3.701443225138378*^9, 3.7014432735613422`*^9}, {3.7014558056722107`*^9, 
+   3.7014558075664177`*^9}, {3.7014558972839003`*^9, 3.701455914971212*^9}, 
+   3.701540780860968*^9, {3.701540872229499*^9, 3.7015409133696117`*^9}, {
+   3.701542475521658*^9, 3.701542497095083*^9}, 3.705354574582036*^9, {
+   3.711721139095138*^9, 3.711721148297516*^9}},
+ ExpressionUUID -> "91417d5d-1405-4c33-9cef-e505f562e13e"],
+
+Cell[BoxData[
+ RowBox[{"ARTGetArtifact", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", "\"\<my/artifact/directory/\>\"",
+    ",", "\"\<testFile1.txt\>\"", ",", "\"\</Users/userid/Desktop/Test\>\""}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.701446454840962*^9, 3.701446564097189*^9}, 
+   3.701472449695541*^9, 3.7015444315691023`*^9, {3.7015446578484993`*^9, 
+   3.7015446839948483`*^9}, 3.705354555985092*^9, {3.7117209111693296`*^9, 
+   3.711720929685848*^9}, {3.7117209916856403`*^9, 3.7117209922579412`*^9}},
+ ExpressionUUID -> "f5ec5585-32fd-4037-bc9d-adafae5bc9ae"],
+
+Cell["\<\
+In this example, we get the file \[OpenCurlyDoubleQuote]testFile1.txt\
+\[CloseCurlyDoubleQuote] from the server \
+\[OpenCurlyDoubleQuote]https://artifactory.example.com\[CloseCurlyDoubleQuote]\
+, in the repository \[OpenCurlyDoubleQuote]maven-libs-snapshot-local\
+\[CloseCurlyDoubleQuote], inside the permissions target \
+\[OpenCurlyDoubleQuote]my/artifact/directory/\[CloseCurlyDoubleQuote] and \
+save it to \[OpenCurlyDoubleQuote]/Users/userid/Desktop/Test\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.70145581054426*^9, 3.701455819605864*^9}, {
+   3.7014559342501087`*^9, 3.701455986806149*^9}, 3.701456647801586*^9, {
+   3.701471887895546*^9, 3.70147189631746*^9}, {3.7014719450674057`*^9, 
+   3.7014719917630863`*^9}, {3.701472077550005*^9, 3.701472154716216*^9}, 
+   3.7014724497313128`*^9, 3.701540921529286*^9, {3.701540983711732*^9, 
+   3.701541017532674*^9}, 3.701544431590538*^9, 3.70154465764429*^9, {
+   3.7015446879782667`*^9, 3.701544690810554*^9}, {3.7117209487987537`*^9, 
+   3.71172099436162*^9}, 3.711721161775669*^9, 3.711721261375524*^9},
+ ExpressionUUID -> "3ce7e3ff-800b-45b7-a4d4-0b38ed548fe6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ARTGetArtifacts:", "Subsection",
+ CellChangeTimes->{{3.701453512192087*^9, 3.70145352774417*^9}, {
+  3.70154145810536*^9, 3.70154145831177*^9}, {3.705354675236044*^9, 
+  3.7053546763771343`*^9}},
+ ExpressionUUID -> "b56a3a25-56be-41a9-8f81-aba6d8a122f2"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifactDirectories\[CloseCurlyDoubleQuote], and \
+\[OpenCurlyDoubleQuote]saveDirectory\[CloseCurlyDoubleQuote] as strings, with \
+\[OpenCurlyDoubleQuote]artifacts\[CloseCurlyDoubleQuote] as a list of \
+strings. The artifacts in the list will all be saved to \
+\[OpenCurlyDoubleQuote]saveDirectory\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.701453542614863*^9, 3.7014537380383883`*^9}, {
+   3.701456010662736*^9, 3.70145603341201*^9}, {3.7014567986829987`*^9, 
+   3.701456835055871*^9}, 3.701540798138515*^9, {3.701541030491707*^9, 
+   3.701541059186482*^9}, {3.701541496118305*^9, 3.7015415604831657`*^9}, {
+   3.701542018494974*^9, 3.701542019333444*^9}, {3.701542446841504*^9, 
+   3.7015424573689127`*^9}, 3.705354580990365*^9, {3.711721137069672*^9, 
+   3.711721151830123*^9}},
+ ExpressionUUID -> "99b762b9-7b59-4842-8535-581cc8c50c66"],
+
+Cell[BoxData[
+ RowBox[{"ARTGetArtifacts", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", " ", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", " ", 
+   RowBox[{"{", "\"\<my/artifact/directory/\>\"", "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\"\<testFile1.txt\>\"", ",", "\"\<testFile2.txt\>\""}], "}"}], 
+   ",", "\"\</Users/userid/Desktop/Test\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.701453757455771*^9, 3.701453821035878*^9}, {
+   3.701454237097348*^9, 3.701454242663587*^9}, {3.701454336132913*^9, 
+   3.701454372705408*^9}, {3.701454631661313*^9, 3.701454634172029*^9}, {
+   3.701455221201208*^9, 3.701455225114107*^9}, {3.701472186561139*^9, 
+   3.701472206263317*^9}, 3.701472449745905*^9, {3.701541607225101*^9, 
+   3.701541636584105*^9}, {3.7015443308157187`*^9, 3.701544333583349*^9}, 
+   3.701544431606102*^9, 3.701544657659322*^9, 3.7053545525454893`*^9, {
+   3.711721011327148*^9, 3.711721013678609*^9}},
+ ExpressionUUID -> "2f52a705-cb7f-4dd6-85b2-8db3d146aed2"],
+
+Cell["\<\
+In this example, we get the files \[OpenCurlyDoubleQuote]testFile1.txt\
+\[CloseCurlyDoubleQuote] and \[OpenCurlyDoubleQuote]testFile2.txt\
+\[CloseCurlyDoubleQuote] from the server \
+\[OpenCurlyDoubleQuote]https://artifactory.example.com\[CloseCurlyDoubleQuote]\
+, in the repository \[OpenCurlyDoubleQuote]maven-libs-snapshot-local\
+\[CloseCurlyDoubleQuote], inside the permissions target \
+\[OpenCurlyDoubleQuote]my/artifact/directory/\[CloseCurlyDoubleQuote] and \
+save it to \[OpenCurlyDoubleQuote]/Users/userid/Desktop/Test\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.701456109272395*^9, 3.7014561905810432`*^9}, 
+   3.701456651681217*^9, 3.7014721655779333`*^9, {3.701472234773695*^9, 
+   3.701472300802734*^9}, {3.701472334721354*^9, 3.7014723432261333`*^9}, 
+   3.701472449768868*^9, {3.701541577074654*^9, 3.70154159906562*^9}, {
+   3.701541707254203*^9, 3.7015417503940353`*^9}, 3.7015444316273947`*^9, 
+   3.7015446576799707`*^9, {3.711721033996394*^9, 3.711721038743573*^9}, 
+   3.711721164037033*^9, 3.711721263128399*^9},
+ ExpressionUUID -> "6de2ab3e-0480-4f3b-9b80-c632e325df12"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ARTCreateArtifact/ARTUpdateArtifact:", "Subsection",
+ CellChangeTimes->{{3.701456620737259*^9, 3.701456635607418*^9}, {
+  3.701471152663493*^9, 3.70147115395168*^9}, {3.705354667268897*^9, 
+  3.705354671148404*^9}},
+ ExpressionUUID -> "443b0711-3862-4ad2-88ae-78c3dfa9be3b"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifactDirectory\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifactAbsolutePath\[CloseCurlyDoubleQuote], and \
+\[OpenCurlyDoubleQuote]contentType\[CloseCurlyDoubleQuote] as strings. The \
+file with the \[OpenCurlyDoubleQuote]artifactAbsolutePath\
+\[CloseCurlyDoubleQuote] will be posted to the \
+\[OpenCurlyDoubleQuote]artifactDirectory\[CloseCurlyDoubleQuote] you specify. \
+\>", "Text",
+ CellChangeTimes->{{3.701456699630094*^9, 3.7014567033412313`*^9}, 
+   3.701456771308086*^9, {3.701456916363531*^9, 3.701456963305131*^9}, {
+   3.701457085525249*^9, 3.701457110314816*^9}, 3.701540810249936*^9, {
+   3.7015417908900023`*^9, 3.7015417916645727`*^9}, {3.7015420468525257`*^9, 
+   3.701542064539332*^9}, {3.701542414275073*^9, 3.7015424282579107`*^9}, {
+   3.701545277690158*^9, 3.701545304654457*^9}, 3.705354591789421*^9, {
+   3.711721134178568*^9, 3.711721135011394*^9}, {3.71172117796427*^9, 
+   3.711721178627778*^9}},
+ ExpressionUUID -> "e80805a7-79f5-42fa-ba95-6bc63c2dbb6d"],
+
+Cell[BoxData[
+ RowBox[{"ARTCreateArtifact", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", "\"\<my/artifact/directory/\>\"",
+    ",", "\"\</Users/userid/Desktop/testFile1.txt\>\"", ",", " ", 
+   "\"\<text/plain\>\""}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.701461747164863*^9, 3.701472449784277*^9, 3.701472914455388*^9, 
+   3.7015444316416388`*^9, 3.701544657693892*^9, {3.701545315070114*^9, 
+   3.701545320614018*^9}, 3.705354548983778*^9, {3.711721051838943*^9, 
+   3.711721054257696*^9}},
+ ExpressionUUID -> "3548355a-4de6-4427-b083-3a2b9c8b250e"],
+
+Cell["\<\
+In this example, we post the file \
+\[OpenCurlyDoubleQuote]/Users/userid/Desktop/testFile1.txt\
+\[CloseCurlyDoubleQuote] to the server \
+\[OpenCurlyDoubleQuote]https://artifactory.example.com\[CloseCurlyDoubleQuote]\
+, in the repository \[OpenCurlyDoubleQuote]maven-libs-snapshot-local\
+\[CloseCurlyDoubleQuote], inside the permissions target \
+\[OpenCurlyDoubleQuote]my/artifact/directory/\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.701463493672633*^9, 3.70146349662735*^9}, {
+   3.701463910504415*^9, 3.70146392355168*^9}, {3.701463957438092*^9, 
+   3.701463975357283*^9}, 3.701470861845007*^9, {3.7014725416565943`*^9, 
+   3.701472594565247*^9}, {3.701472626979525*^9, 3.701472628235518*^9}, {
+   3.701472831867343*^9, 3.701472839737836*^9}, {3.7015420916278257`*^9, 
+   3.701542113337109*^9}, 3.701542211206032*^9, 3.701544431664072*^9, 
+   3.7015446577146893`*^9, {3.711721072090777*^9, 3.711721074462829*^9}, {
+   3.7117211670625477`*^9, 3.711721170168293*^9}},
+ ExpressionUUID -> "abd33d56-66e9-4e06-a347-dbbfd5cb7cfd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ARTCreateArtifacts/ARTUpdateArtifacts:", "Subsection",
+ CellChangeTimes->{{3.7014621876583157`*^9, 3.7014621965189543`*^9}, {
+  3.701462523961628*^9, 3.7014625306077642`*^9}, {3.7014711619362288`*^9, 
+  3.7014711622314987`*^9}, {3.7053546201889*^9, 3.705354623484028*^9}},
+ ExpressionUUID -> "02b0c3f7-4133-4965-8630-2d353680c8cf"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote], and \
+\[OpenCurlyDoubleQuote]fileDirectory\[CloseCurlyDoubleQuote] as strings with \
+\[OpenCurlyDoubleQuote]artifacts\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]contentTypes\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]artifactDirectories\[CloseCurlyDoubleQuote] as lists \
+of strings. All the artifacts you list with \[OpenCurlyDoubleQuote]artifacts\
+\[CloseCurlyDoubleQuote] that are in \[OpenCurlyDoubleQuote]fileDirectory\
+\[CloseCurlyDoubleQuote] will be posted to the \
+\[OpenCurlyDoubleQuote]artifactDirectory\[CloseCurlyDoubleQuote].  
+ARTCreateArtifacts[server, repository, fileDirectory, artifactDirectories, \
+artifacts, contentTypes]\
+\>", "Text",
+ CellChangeTimes->{{3.7014625512706957`*^9, 3.701462567894042*^9}, {
+   3.701463524682412*^9, 3.701463575039791*^9}, {3.701463719537393*^9, 
+   3.701463769294971*^9}, {3.701463867226468*^9, 3.701463881361923*^9}, {
+   3.701468275695488*^9, 3.7014682766619177`*^9}, 3.701471306232736*^9, 
+   3.701540825889348*^9, {3.701542323551793*^9, 3.70154239011595*^9}, {
+   3.701542644258525*^9, 3.701542702372264*^9}, {3.701545956786545*^9, 
+   3.701545970440205*^9}, {3.701546154039672*^9, 3.701546159959144*^9}, {
+   3.701546446619671*^9, 3.701546447129949*^9}, 3.7053546300755796`*^9, 
+   3.711721132603959*^9},
+ ExpressionUUID -> "62667de1-128c-4b2b-a0cd-99d629b39597"],
+
+Cell[BoxData[
+ RowBox[{"ARTCreateArtifacts", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", " ", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", " ", 
+   "\"\</Users/userid/Desktop/\>\"", ",", " ", 
+   RowBox[{"{", "\"\<my/artifact/directory/\>\"", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<testFile1.txt\>\"", ",", "\"\<testFile2.txt\>\""}], "}"}], 
+   ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"\"\<text/plain\>\"", ",", "\"\<text/plain\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7014637927675323`*^9, 3.70146389751355*^9}, {
+   3.7014639401830797`*^9, 3.701463941055656*^9}, 3.7014644478897133`*^9, {
+   3.701465402380703*^9, 3.701465444451844*^9}, 3.701465516136284*^9, 
+   3.701465644962427*^9, 3.7014660560166397`*^9, 3.701468140358843*^9, 
+   3.701468176963873*^9, {3.7014693856515493`*^9, 3.70146938686727*^9}, 
+   3.7014697530503387`*^9, 3.701472449811911*^9, {3.701544268011756*^9, 
+   3.701544307439979*^9}, 3.7015444314554768`*^9, 3.701544657734178*^9, {
+   3.7015461198269167`*^9, 3.701546130936101*^9}, {3.701546195408345*^9, 
+   3.701546217316285*^9}, {3.701546302530723*^9, 3.7015463073692083`*^9}, 
+   3.705354544522235*^9, {3.711721098549968*^9, 3.711721101002377*^9}},
+ ExpressionUUID -> "4be878e8-a3d1-4704-9239-ce947ef8f9c2"],
+
+Cell["\<\
+In this example, we post the file \"/Users/userid/Desktop/testFile1.txt\" to \
+the server \"https://artifactory.example.com\", in the repository \
+\"maven-libs-snapshot-local\", inside the permissions target \
+\"my/artifact/directory/\".
+Note: \[OpenCurlyDoubleQuote]contentTypes\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]artifacts\[CloseCurlyDoubleQuote] need to be the same \
+length.\
+\>", "Text",
+ CellChangeTimes->{{3.7014708712622643`*^9, 3.701470872676605*^9}, {
+   3.701472887139495*^9, 3.701472898552803*^9}, {3.701472991068021*^9, 
+   3.701473013290141*^9}, 3.7015444314827347`*^9, 3.701544657754013*^9, {
+   3.701546312450087*^9, 3.701546339838706*^9}, {3.70154677134015*^9, 
+   3.7015467789152822`*^9}, {3.7117211146839848`*^9, 
+   3.7117211168196697`*^9}, {3.7117211886297827`*^9, 3.7117211930510406`*^9}},
+ 
+ ExpressionUUID -> "197e508a-c310-47b7-b94b-879ee12b6ea7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ARTDeleteArtifact:", "Subsection",
+ CellChangeTimes->{{3.701471179782309*^9, 3.701471210205908*^9}, 
+   3.7053546386262197`*^9},
+ ExpressionUUID -> "88e0f844-8c50-467f-a8a5-e1884d79de45"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]artifactDirectory\[CloseCurlyDoubleQuote], and \
+\[OpenCurlyDoubleQuote]artifact\[CloseCurlyDoubleQuote] as a list of strings.\
+\
+\>", "Text",
+ CellChangeTimes->{{3.701471216628036*^9, 3.7014713088012857`*^9}, 
+   3.701540845264744*^9, {3.70154272662017*^9, 3.701542744283387*^9}, 
+   3.7053546483025637`*^9, {3.711721129633545*^9, 3.711721130196162*^9}, {
+   3.7117211977422247`*^9, 3.7117211979333344`*^9}},
+ ExpressionUUID -> "3f29dae8-b5fd-4b9d-804c-d4f3eb84cada"],
+
+Cell[BoxData[
+ RowBox[{"ARTDeleteArtifact", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", "\"\<my/artifact/directory/\>\"",
+    ",", "\"\<testFile1.txt\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.701471314949298*^9, 3.701471359896215*^9}, 
+   3.7015444314946203`*^9, 3.701544657769228*^9, 3.7053545409862556`*^9, {
+   3.711721208182539*^9, 3.711721210601371*^9}},
+ ExpressionUUID -> "88ac51ee-2e89-4adf-80ea-444b149e2bed"],
+
+Cell["\<\
+In this example, we delete the file \[OpenCurlyDoubleQuote]testFile1.txt\
+\[CloseCurlyDoubleQuote] from the server \
+\[OpenCurlyDoubleQuote]https://artifactory.example.com\[CloseCurlyDoubleQuote]\
+, in the repository \[OpenCurlyDoubleQuote]maven-libs-snapshot-local\
+\[CloseCurlyDoubleQuote], inside the permissions target \
+\[OpenCurlyDoubleQuote]my/artifact/directory/\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{
+  3.7014713888239937`*^9, {3.701473055217662*^9, 3.701473107565695*^9}, {
+   3.701543007464882*^9, 3.701543021382319*^9}, 3.701544431515682*^9, 
+   3.7015446577909927`*^9, {3.7117212063387527`*^9, 3.7117212153149643`*^9}, 
+   3.711721268730853*^9},
+ ExpressionUUID -> "b39649d1-26c1-4e67-bc1e-886c47270dac"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ARTDeleteArtifacts:", "Subsection",
+ CellChangeTimes->{{3.701471405555677*^9, 3.701471407292738*^9}, 
+   3.705354654806175*^9},
+ ExpressionUUID -> "b5535e06-157a-4cac-bd47-071b092128e4"],
+
+Cell["\<\
+Arguments include \[OpenCurlyDoubleQuote]server\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]repository\[CloseCurlyDoubleQuote] as strings with \
+\[OpenCurlyDoubleQuote]artifacts\[CloseCurlyDoubleQuote] and \
+\[OpenCurlyDoubleQuote]artifactDirectories\[CloseCurlyDoubleQuote] being \
+lists of strings.
+ARTDeleteArtifacts[server, repository, artifactDirectories, artifacts]\
+\>", "Text",
+ CellChangeTimes->{{3.701471411405291*^9, 3.701471529038241*^9}, 
+   3.701540854279862*^9, {3.701542751762944*^9, 3.70154281549601*^9}, {
+   3.7015429182550364`*^9, 3.701542925883238*^9}, {3.701543032037621*^9, 
+   3.7015430351675787`*^9}, 3.7053546585816927`*^9, 3.7117212323254023`*^9},
+ ExpressionUUID -> "edf94aae-38b0-42bf-a693-83cae31721be"],
+
+Cell[BoxData[
+ RowBox[{"ARTDeleteArtifacts", "[", 
+  RowBox[{
+  "\"\<https://artifactory.example.com\>\"", ",", 
+   "\"\<maven-libs-snapshot-local\>\"", ",", 
+   RowBox[{"{", "\"\<my/artifact/directory/\>\"", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<testFile1.txt\>\"", ",", "\"\<testFile2.txt\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7014715432081823`*^9, 3.701471585565432*^9}, {
+   3.701542829671514*^9, 3.701542836623474*^9}, {3.7015429667006598`*^9, 
+   3.70154297740239*^9}, {3.7015430519571*^9, 3.701543059660778*^9}, {
+   3.701543306641337*^9, 3.7015433087369556`*^9}, 3.7015444315288773`*^9, 
+   3.701544657808826*^9, 3.705354538402567*^9, {3.711721235104465*^9, 
+   3.71172123786071*^9}},
+ ExpressionUUID -> "cf243b82-6ba2-453c-957a-586919c97fd5"],
+
+Cell["\<\
+In this example, we delete the files \"testFile1.txt\" and \
+\[OpenCurlyDoubleQuote]testFile2.txt\[CloseCurlyDoubleQuote] from the server \
+\"https://artifactory.example.com\", in the repository \
+\"maven-libs-snapshot-local\", inside the permissions target \
+\"my/artifact/directory/\".\
+\>", "Text",
+ CellChangeTimes->{{3.701473195100995*^9, 3.701473203386066*^9}, {
+   3.7015428420862913`*^9, 3.701542843726967*^9}, {3.70154294125974*^9, 
+   3.7015429567936077`*^9}, {3.701543107562488*^9, 3.7015431085382442`*^9}, {
+   3.701543184182769*^9, 3.701543187062612*^9}, {3.701543238892001*^9, 
+   3.701543242955855*^9}, 3.701544431547945*^9, 3.701544657831483*^9, {
+   3.711721246344511*^9, 3.7117212501680326`*^9}},
+ ExpressionUUID -> "5cefc604-69d4-4527-8ebb-b1b4f4e93ff3"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1000, 851},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 212, 3, 65, "Chapter"],
+Cell[795, 27, 509, 10, 54, "Input"],
+Cell[CellGroupData[{
+Cell[1329, 41, 158, 2, 64, "Section"],
+Cell[CellGroupData[{
+Cell[1512, 47, 160, 2, 44, "Subsection"],
+Cell[1675, 51, 313, 6, 30, "Text"],
+Cell[1991, 59, 185, 3, 32, "Input"],
+Cell[2179, 64, 367, 7, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2583, 76, 213, 3, 44, "Subsection"],
+Cell[2799, 81, 616, 11, 30, "Text"],
+Cell[3418, 94, 976, 16, 32, "Input"],
+Cell[4397, 112, 411, 7, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4845, 124, 166, 2, 44, "Subsection"],
+Cell[5014, 128, 459, 8, 30, "Text"],
+Cell[5476, 138, 708, 12, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6221, 155, 283, 4, 44, "Subsection"],
+Cell[6507, 161, 970, 15, 68, "Text"],
+Cell[7480, 178, 1168, 19, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8685, 202, 286, 4, 44, "Subsection"],
+Cell[8974, 208, 915, 14, 68, "Text"],
+Cell[9892, 224, 1020, 21, 54, "Input"],
+Cell[10915, 247, 638, 10, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11590, 262, 192, 3, 44, "Subsection"],
+Cell[11785, 267, 421, 7, 30, "Text"],
+Cell[12209, 276, 472, 9, 32, "Input"],
+Cell[12684, 287, 242, 5, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12963, 297, 165, 2, 44, "Subsection"],
+Cell[13131, 301, 350, 7, 30, "Text"],
+Cell[13484, 310, 538, 9, 54, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14071, 325, 190, 3, 64, "Section"],
+Cell[CellGroupData[{
+Cell[14286, 332, 188, 3, 44, "Subsection"],
+Cell[14477, 337, 1010, 16, 49, "Text"],
+Cell[15490, 355, 639, 11, 54, "Input"],
+Cell[16132, 368, 1146, 18, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17315, 391, 260, 4, 44, "Subsection"],
+Cell[17578, 397, 1027, 16, 49, "Text"],
+Cell[18608, 415, 1005, 17, 54, "Input"],
+Cell[19616, 434, 1121, 18, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20774, 457, 280, 4, 44, "Subsection"],
+Cell[21057, 463, 1162, 18, 49, "Text"],
+Cell[22222, 483, 621, 12, 54, "Input"],
+Cell[22846, 497, 1054, 17, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23937, 519, 337, 4, 44, "Subsection"],
+Cell[24277, 525, 1482, 23, 68, "Text"],
+Cell[25762, 550, 1283, 23, 75, "Input"],
+Cell[27048, 575, 900, 16, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27985, 596, 193, 3, 44, "Subsection"],
+Cell[28181, 601, 637, 11, 30, "Text"],
+Cell[28821, 614, 492, 9, 54, "Input"],
+Cell[29316, 625, 747, 13, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30100, 643, 192, 3, 44, "Subsection"],
+Cell[30295, 648, 752, 12, 49, "Text"],
+Cell[31050, 662, 781, 15, 54, "Input"],
+Cell[31834, 679, 783, 13, 49, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
