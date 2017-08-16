@@ -1,6 +1,3 @@
-group 'org.openmbee.mathematica'
-version '1.0.0'
-
 apply plugin: 'distribution'
 
 String buildTag = project.getProperties().get('buildTag')
