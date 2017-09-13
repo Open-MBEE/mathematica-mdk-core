@@ -80,17 +80,18 @@ Table[url = StringJoin[server, "/artifactory/", repository, "/", artifactDirecto
 End[];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*ARTPost*)
 
 
 Begin["`Private`"];
-ARTCreateArtifact[server_, repository_, artifactDirectory_, artifactAbsolutePath_, contentType_]:=(
-url = StringJoin[server, "/artifactory/", repository, "/", artifactDirectory, "/File1.txt"];
+ARTCreateArtifact[server_, repository_, artifactDirectory_, artifactPath_, artifactName_, contentType_]:=(
+url = StringJoin[server, "/artifactory/", repository, "/", artifactDirectory,"/",artifactName];
+artifactAbsolutePath=StringJoin[artifactPath,"/",artifactName];
 Return@URLExecute[HTTPRequest[ url,
 	<|Method -> "PUT",
-	"Body" -> Import[artifactAbsolutePath],
-	"ContentType" -> contentType|>]]  (* This needs to either be an argument or completely omitted *)
+	"Content" -> Import[artifactAbsolutePath],
+	"ContentType" -> contentType|>]]
 )
 End[];
 
@@ -98,16 +99,16 @@ End[];
 Begin["`Private`"];
 ARTCreateArtifacts[server_, repository_, artifactDirectory_, artifacts_, fileDirectory_, contentTypes_]:=(      (* test if you can post a whole directory and the individual files will be created or if you have to specify the artifact *)
 url = StringJoin[server, "/artifactory/", repository, "/", artifactDirectory ];
-filePath = StringJoin/@Thread[ {fileDirectory, "/", artifacts} ]; (* !! test this "/" thing *)
+filePath = StringJoin/@Thread[ {fileDirectory, "/", artifacts} ];
 If[Length[contentTypes]==1,
 	Table[Return@URLExecute[HTTPRequest[ url,
 		<|Method -> "PUT",
-		"Body" -> Import[ filePath[[i]] ],
+		"Content" -> Import[ filePath[[i]] ],
 		"ContentType" -> contentTypes|> ]],
 	{i, Length[artifacts]}],
 	Table[Return@URLExecute[HTTPRequest[ url,
 		<|Method -> "PUT",
-		"Body" -> Import[ filePath[[i]] ],
+		"Content" -> Import[ filePath[[i]] ],
 		"ContentType" -> contentTypes[[i]]|> ]],
 	{i, Length[artifacts]}]]
 )
